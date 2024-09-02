@@ -18,44 +18,40 @@ public class task {
     @Autowired
     private emailService email;
 
-    @Scheduled(cron ="0 45 15 * * *")
+    @Scheduled(cron = "0 30 9 * * *")
     public void enviarNotificacionRegistroCuenta() {
-        var listaUsuario=data.cambiarTipoDocumento();
+        var listaUsuario = data.cambiarTipoDocumento();
         for (usuario usuario : listaUsuario) {
-            System.out.println("Usuario registrado: "+ 
-            usuario.getNombre_completo());
-            email.cambiarTipoDocumento(usuario.getCorreo_electronico(),usuario.getNombre_completo());
+            System.out.println("Usuario registrado: " + usuario.getNombre_completo());
+            email.cambiarTipoDocumento(usuario.getCorreo_electronico(), usuario.getNombre_completo());
         }
     }
-    @Scheduled(cron ="0 45 15 * * *")
+
+    @Scheduled(cron = "0 30 9 * * *")
     public void sendNotificationCambiarTipoDocumento() {
-        var listaUsuario=data.cambiarTipoDocumento();
+        var listaUsuario = data.cambiarTipoDocumento();
         for (usuario usuario : listaUsuario) {
-            System.out.println("Usuario que requiere actualizar documento: "+ 
-            usuario.getNombre_completo());
-            email.cambiarTipoDocumento(usuario.getCorreo_electronico(),usuario.getNombre_completo());
+            System.out.println("Usuario que requiere actualizar documento: " + usuario.getNombre_completo());
+            email.cambiarTipoDocumento(usuario.getCorreo_electronico(), usuario.getNombre_completo());
         }
     }
-    
-    @Scheduled(cron ="0 45 15 * * *") //Para realizar las pruebas rápidas: fixedRate =1000
+
+    @Scheduled(cron = "0 30 9 * * *")
     public void sendNotificationActualizarContra() {
-        var listaUsuario=data.actualizarContraseña();
+        var listaUsuario = data.actualizarContraseña();
         for (usuario usuario : listaUsuario) {
-            System.out.println("Usuario que requiere actualizar contraseña: "+ 
-            usuario.getNombre_completo());
+            System.out.println("Usuario que requiere actualizar contraseña: " + usuario.getNombre_completo());
             email.actualizarContraseña(usuario.getCorreo_electronico());
         }
     }
-    
-    @Scheduled(cron ="0 45 15 * * *")
+
+    @Scheduled(cron = "0 30 9 * * *")
     public void sendIniciarSesion() {
-        var listaUsuario=data.iniciosesionNotificar();
+        var listaUsuario = data.iniciosesionNotificar();
         for (usuario usuario : listaUsuario) {
-            System.out.println("Usuario que debe iniciar sesión: "+ 
-            usuario.getNombre_completo());
+            System.out.println("Usuario que debe iniciar sesión: " + usuario.getNombre_completo());
             email.iniciosesionNotificar(usuario.getCorreo_electronico());
         }
     }
-    
-    
+
 }
