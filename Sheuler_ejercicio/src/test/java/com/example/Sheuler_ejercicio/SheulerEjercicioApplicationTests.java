@@ -1,10 +1,10 @@
-package com.TaskSeg.Plano;
+package com.example.Sheuler_ejercicio;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PlanoApplicationTests {
+class SheulerEjercicioApplicationTests {
 
 	@Test
 	void contextLoads() {
